@@ -4,10 +4,14 @@
 #     70,60,55,75,95,90,80,85,100
 #     [조건] 중간고사 점수를 리스트로 생성하고 평균 구하기
 score = [70,60,55,75,95,90,80,85,100]
-sum = 0
+total = 0
 for i in score:
-    sum += i
-print("평균 : %d" % (sum // len(score)))
+    total += i
+print("평균 : %.2f" % (total / len(score)))
+print()
+
+# for문 없이 구현. -> 일단 아래 문장 실행 오류남
+print("평균 : %.2f" % (sum(score) / len(score)))
 
 #%%
 # q2) 아래 문자열의 길이를 구하시오.
@@ -56,9 +60,18 @@ print(list2)
 # q9) 다음 리스트에서 '정' 글자만 제외하고 출력하기
 #     ["갑","을","병","정","경"]
 list3 = ["갑","을","병","정","경"]
-list3.remove("정")
+# list3.remove("정")
+# print(list3)
+# list 자료 수정 없이 출력
+for str in list3:
+    if str != '정':
+        print(str, end="")
+print()
 print(list3)
-
+# list comprehension으로
+print("list comprehension")
+list3_1 = [s for s in list3 if s != '정']
+print(list3_1)
 #%%
 # q10) 다음 리스트에서 5글자 이상의 단어만 출력하기
 #      ["nice","study","python","anaconda","!"]
@@ -67,6 +80,9 @@ for s in list4:
     if len(s) >= 5:
         print(s)
 
+print("list comprehension")
+list4_1 = [s for s in list4 if len(s) >= 5]
+print(list4_1)
 #%%
 # q11) 아래 리스트에서 소문자만 출력하기
 #      ["A","b","c","D","e","F","G","h"]
@@ -75,6 +91,9 @@ for s in list5:
     if str(s).islower():
         print(s)
 
+print("list comprehension")
+list5_1 = [s for s in list5 if s.islower()]
+print(list5_1)
 #%%
 # q12) 아래 리스트에서 소문자는 대문자로 대문자는 소문자로 출력하기
 #      ["A","b","c","D","e","F","G","h"]
@@ -86,21 +105,29 @@ print(list6)
 # %%
 # q13) 주차장 프로그램 작성하기
 park = []
-cars = []
-num = 0
-while num != 3:
+while True:
     num = int(input("[1] 자동차 넣기  |  [2] 자동차 빼기  |  [3] 종료 : "))
     if num == 1:
-        park.append(chr(65 + len(park)))
-        print("%s 자동차 들어감. 주차장 상태 ==> " % (chr(64 + len(park))), end="")
-        print(park)
-    if num == 2:
+        if len(park) < 5:
+            park.append(chr(65 + len(park)))
+            print("%s 자동차 들어감. 주차장 상태 ==> " % (chr(64 + len(park))), end="")
+            print(park)
+        else:
+            print("만차입니다.")
+            continue
+    elif num == 2:
         if park == []:
             print("빠져나갈 자동차가 없음")
         else:
             print("%s 자동차 나감. 주차장 상태 ==> " % park[-1], end="") 
             park.pop()
             print(park)
+    elif num == 3:
+        print("프로그램 종료")
+        break
+    else:
+        print("번호 확인 요망")
+        continue
 
 
 # %%

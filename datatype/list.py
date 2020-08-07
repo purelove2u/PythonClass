@@ -229,3 +229,44 @@ print()
 for idx, value in enumerate(arr, start=1):
     print("{} : {}".format(idx, value))
 
+
+
+# %%
+# 리스트 컴프리헨션 => 리스트 내포
+# 하나 이상의 이터레이터로부터 파이썬의 자료 구조 만들기
+
+# 리스트 생성하는 여러가지 방법
+
+# 첫번째
+# a = [1,2,3,4,.....]
+
+# 두번째
+a = []
+a.append(1)
+a.append(2)
+a.append(3)
+a.append(4)
+a.append(5)
+a.append(6)
+a.append(7)
+
+# 세번째
+a = []
+for n in range(1, 11):
+    a.append(n)
+
+# 네번째
+print(list("abcdefghijklmn"))
+a = list(range(1, 101))
+print(a)
+
+# 다섯번째 - 컴프리헨션
+print("-- comprehension --")
+numbers = [x for x in range(1, 101)]
+print(numbers)
+
+
+#%%
+# 1~5 까지 숫자 중에서 홀수만 출력
+numbers = [x for x in range(1, 6) if x % 2 == 1]
+print(numbers)
