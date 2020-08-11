@@ -187,3 +187,70 @@ def primeNum():
     if result == 1:
         print("소수")
 primeNum()
+
+#%% 중첩된 리스트를 하나의 리스트로 반환하는 함수
+def flatten(data):
+    output = []
+    for item in data:
+        if type(item) == list:
+            output += flatten(item)
+        else:
+            output.append(item)
+    return output
+
+
+example = [[1, 2, 3], [4, [5, 6]], 7, [8, 9]]
+print("원본 :", example)
+print("변환 :", flatten(example))
+
+# %%
+output = [[], [], []]
+
+def reshape(numbers):
+    for i in numbers:    
+        output[(i + 2) % 3].append(i)
+    return output
+
+numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+print("원본 : ", numbers)
+print("변환 : ", reshape(numbers))
+
+# %%
+import random
+
+def get_number():
+    return random.randrange(1, 46)
+
+lotto = []
+num = 0
+print("로또 추첨 시작")
+while True:
+    num = get_number()
+    if lotto.count(num) == 0:
+        lotto.append(num)
+    if len(lotto) >= 6:
+        break
+lotto.sort()
+print("추첨된 로또 번호 ==> ", lotto)
+
+# %% 변수의 유효범위
+a = 1
+
+def func1(a):
+    print("함수 내부 ", a)
+    a += 1
+    print("함수 내부 ", a)
+
+def func2():
+    # 함수 내부에서 함수 외부에 있는 변수를 참조하지 못함
+    # 참조하기 위한 구문 필요
+    global a
+    a += 3
+    return a
+
+func1(1)
+print(a)
+
+print(func2())
+
+# %%

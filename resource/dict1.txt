@@ -1,0 +1,3 @@
+name : hong
+age : 24
+addr : 서울
