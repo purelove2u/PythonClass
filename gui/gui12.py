@@ -2,7 +2,6 @@
 from tkinter import *
 from tkinter import messagebox
 
-
 # def msg_show():
 #     messagebox.showinfo("타이틀", "메세지 내용")
 
@@ -49,9 +48,7 @@ for i in range(0, 9):
     btnList[i] = Button(
         window,
         image=photoList[i],
-        command=lambda pos=i: messagebox.showinfo(
-            androidList[pos], androidList[pos]
-        ),
+        command=lambda pos=i: messagebox.showinfo(androidList[pos], androidList[pos]),
     )
 
 
@@ -64,4 +61,3 @@ for i in range(0, 3):
     xPos = 0
     yPos += 70
 window.mainloop()
-
